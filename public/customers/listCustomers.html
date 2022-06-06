@@ -78,7 +78,35 @@
         <!--Body-->
         <div id="bodyDiv">
 
+            <div>
+                <br><br>
+                <h1>List Customers</h1>
+                <hr>
+                <br>
+            </div>
+
+            <div id="newCustomer">
+                <h4>Information About All Customer</h4>
+                <div class="input-group mb-3">
+                    <input id="searchCustomer" placeholder="Type here..." type="text" class="form-control">
+                    <button id="btnSearchCustomer" class="btn btn-primary">Search</button>
+                </div>
+                <br>
+                <table class="table table-light">
+                    <thead>
+                        <th>Full Name</th>
+                        <th>Address</th>
+                        <th>Phone Number</th>
+                        <th>Email</th>
+                        <th>ZIP Code</th>
+                        <th>Actions</th>
+                    </thead>
+                    <tbody id="customerList"></tbody>
+                </table>
+            </div>
         </div>
+
+    </div>
 
     </div>
 

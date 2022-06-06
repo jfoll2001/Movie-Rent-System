@@ -18,3 +18,23 @@
     left: 50%;
     font-family: cursive;
 }
+
+h1 {
+    color: white;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.700);
+    padding: 2%;
+}
+
+h4 {
+    color: white;
+}
+
+#newCustomer {
+    width: 50%;
+    text-align: center;
+    position: relative;
+    left: 24%;
+    background-color: rgba(0, 0, 0, 0.700);
+    padding: 2%;
+}
