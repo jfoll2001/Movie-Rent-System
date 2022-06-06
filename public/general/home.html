@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="/public/styles.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!--Navbar-->
+        <div class="navbar" id="navabar">
+
+            <a href="/" class="nav-link">Home</a>
+            &nbsp;&nbsp;
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Cutomers
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" href="/newCustomer">New Customer</a></li>
+                    <li><a class="dropdown-item" href="/listCustomer">List Customers</a></li>
+                </ul>
+            </div>
+            &nbsp;&nbsp;
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Movies
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" href="/newMovie">New Movie</a></li>
+                    <li><a class="dropdown-item" href="/listMovie">List Movies</a></li>
+                </ul>
+            </div>
+            &nbsp;&nbsp;
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Rentals
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" href="/newRental">New Rental</a></li>
+                    <li><a class="dropdown-item" href="/listRental">List Rentals</a></li>
+                </ul>
+            </div>
+            &nbsp;&nbsp;
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Reports
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" href="/availableMovies">Available Movies</a></li>
+                    <li><a class="dropdown-item" href="/rentedMovies">Rented Movies</a></li>
+                </ul>
+            </div>
+            &nbsp;&nbsp;
+            <a href="/about" class="nav-link">About</a>
+            &nbsp;
+            <a href="/contact" class="nav-link me-auto">Contact</a>
+
+            <span class="nav-text">
+                THE BEST SYSTEM TO MANAGE MOVIE RENTALS
+            </span>
+            &nbsp;
+        </div>      
+
+    </div>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
