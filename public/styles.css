@@ -3,3 +3,18 @@
     text-indent: 10px;
     font-size: 14px;
 }
+
+#bodyDiv {       
+    height: 800px;
+    background-image: url("/public/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#homeh1 {
+    color: aliceblue;
+    position: relative;
+    top: 30%;
+    left: 50%;
+    font-family: cursive;
+}
