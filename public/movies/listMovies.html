@@ -77,7 +77,32 @@
 
         <!--Body-->
         <div id="bodyDiv">
+            <div>
+                <br><br>
+                <h1>List of Movies</h1>
+                <hr>
+                <br>
+            </div>
 
+            <div id="newCustomer">
+                <h4>Information About All Movies</h4>
+                <div class="input-group mb-3">
+                    <input id="searchMovie" placeholder="Enter Title..." type="text" class="form-control">
+                    <button id="btnSearchMovie" class="btn btn-primary">Search</button>
+                </div>
+                <br>
+                <table class="table table-light">
+                    <thead>
+                        <th>Title</th>
+                        <th>Actors</th>
+                        <th>Genre</th>
+                        <th>Premiere</th>
+                        <th>Available</th>
+                        <th>Actions</th>
+                    </thead>
+                    <tbody id="movieList"></tbody>
+                </table>
+            </div>
         </div>
 
     </div>

@@ -77,7 +77,46 @@
 
         <!--Body-->
         <div id="bodyDiv">
+            <div>
+                <br><br>
+                <h1>New Rental</h1>                
+                <br>
+            </div>
 
+            <div id="newCustomer">
+                <h4>Information About The Rental</h4>
+                <form>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Rent Date</span>
+                        <input id="rentDate" placeholder="Rent Date" type="text" class="form-control" required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Return Date</span>
+                        <input id="returnDate" placeholder="Return Date" type="text" class="form-control" required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Price</span>
+                        <input id="price" placeholder="0.00" type="text" class="form-control" required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Email</span>
+                        <input id="Email" placeholder="Email" type="text" class="form-control" required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">ZIP Code</span>
+                        <input id="zipCode" placeholder="ZIP Code" type="text" class="form-control" required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Customer Name</span>
+                        <select id="customerSelect" class="form-select"></select>                        
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Movie Title</span>
+                        <select id="movieSelect" class="form-select"></select>                        
+                    </div>
+                    <button id="btnSubCustomer" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
         </div>
 
     </div>
