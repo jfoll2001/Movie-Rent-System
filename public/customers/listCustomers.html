@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/styles.css">
 </head>
 
-<body>
+<body onload="read()">
 
     <div class="container">
 
@@ -106,7 +106,59 @@
             </div>
         </div>
 
-    </div>
+        <!--Modals for actions-->
+        <div class="modal fade" id="deleteUser" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Are you sure you want to delete user?</h5>
+                    </div>
+                    <div class="modal-body">
+                        <button class="btn btn-primary" id="btnDelete" data-bs-dismiss="modal">Confirm</button>
+                        &nbsp;
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="updateUser" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Enter updated info</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Full Name</span>
+                            <input id="fullName2" placeholder="Full Name" type="text" class="form-control" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Address</span>
+                            <input id="address2" placeholder="Address" type="text" class="form-control" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Phone Number</span>
+                            <input id="phoneNum2" placeholder="Phone Number" type="text" class="form-control" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Email</span>
+                            <input id="email2" placeholder="Email" type="text" class="form-control" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">ZIP Code</span>
+                            <input id="zipCode2" placeholder="ZIP Code" type="text" class="form-control" required>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" id="btnUpdate"
+                                data-bs-dismiss="modal">Confirm</button>
+                            &nbsp;
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 
@@ -115,7 +167,7 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
 
-    <script src="/public/customers/customers.js"></script>
+    <script src="/customers/customers.js"></script>
 </body>
 
 </html>

@@ -2,7 +2,6 @@ const http = require('http');
 const fs = require('fs');
 const connection = require('./dbconnection/dbconnect.js');
 const { URLSearchParams } = require('url');
-const { json } = require('stream/consumers');
 const port = 5000;
 
 connection.connect((err) => {
@@ -89,6 +88,9 @@ http.createServer((req, res) => {
             break;
         case '/searchCustomers':
             searchCustomers(req, res);
+            break;
+        case '/uniqueCustomers':
+            uniqueCustomers(req, res);
             break;
         default:
             let file = __dirname + '/public' + url;
@@ -179,6 +181,19 @@ let searchCustomers = (req, res) => {
         res.end(JSON.stringify(results));
     });
 };
+
+//let uniqueCustomers = (req, res) => {
+//    let url = req.url.split('?')[1];
+//    let param = new URLSearchParams(url).get('param');
+//    let query = `SELECT * FROM users WHERE name LIKE '%${param}%' OR phonenum LIKE '%${param}%' OR email LIKE '%${param}%'`;
+//    connection.query(query, (err, results) => {
+//        if (err) {
+//            throw (err);
+//        }
+//        res.writeHead(200, { 'Content-Type': 'json' });
+//        res.end(JSON.stringify(results));
+//    });
+//};
 
 //Movies
 let readMovies = (req, res) => {
