@@ -89,9 +89,6 @@ http.createServer((req, res) => {
         case '/searchCustomers':
             searchCustomers(req, res);
             break;
-        //case '/uniqueCustomers':
-        //    uniqueCustomers(req, res);
-        //    break;
         default:
             let file = __dirname + '/public' + url;
             let stream = fs.createReadStream(file);
@@ -128,10 +125,17 @@ let saveCustomers = (req, res) => {
         let query = `INSERT INTO users SET ?`;
         connection.query(query, customers, (err, results) => {
             if (err) {
-                throw (err);
+                res.end(JSON.stringify({
+                    status: false,
+                    message: err.message
+                }));
             }
-            res.writeHead(200, { 'Content-Type': 'json' });
-            res.end();
+            else {
+                res.writeHead(200, { 'Content-Type': 'json' });
+                res.end(JSON.stringify({
+                    status: true
+                }));
+            }
         });
     });
 };
@@ -182,19 +186,6 @@ let searchCustomers = (req, res) => {
     });
 };
 
-//let uniqueCustomers = (req, res) => {
-//    let url = req.url.split('?')[1];
-//    let param = new URLSearchParams(url).get('param');
-//    let query = `SELECT * FROM users WHERE name LIKE '%${param}%' OR phonenum LIKE '%${param}%' OR email LIKE '%${param}%'`;
-//    connection.query(query, (err, results) => {
-//        if (err) {
-//            throw (err);
-//        }
-//        res.writeHead(200, { 'Content-Type': 'json' });
-//        res.end(JSON.stringify(results));
-//    });
-//};
-
 //Movies
 let readMovies = (req, res) => {
     let query = `SELECT * FROM movies`;
@@ -217,10 +208,17 @@ let saveMovies = (req, res) => {
         let query = `INSERT INTO movies SET ?`;
         connection.query(query, customers, (err, results) => {
             if (err) {
-                throw (err);
+                res.end(JSON.stringify({
+                    status: false,
+                    message: err.message
+                }));
             }
-            res.writeHead(200, { 'Content-Type': 'json' });
-            res.end();
+            else {
+                res.writeHead(200, { 'Content-Type': 'json' });
+                res.end(JSON.stringify({
+                    status: true
+                }));
+            }
         });
     });
 };
@@ -293,10 +291,17 @@ let saveRents = (req, res) => {
         let query = `INSERT INTO rentals SET ?`;
         connection.query(query, customers, (err, results) => {
             if (err) {
-                throw (err);
+                res.end(JSON.stringify({
+                    status: false,
+                    message: err.message
+                }));
             }
-            res.writeHead(200, { 'Content-Type': 'json' });
-            res.end();
+            else {
+                res.writeHead(200, { 'Content-Type': 'json' });
+                res.end(JSON.stringify({
+                    status: true
+                }));
+            }
         });
     });
 };
