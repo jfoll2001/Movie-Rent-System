@@ -1,3 +1,4 @@
+//Insert Customer 
 //let save = () => {
 //    let form = {
 //        name: document.querySelector("#fullName").value,
@@ -13,6 +14,7 @@
 //        .then(console.log(form))
 //};
 
+//Read Data
 let read = () => {
     fetch(`http://localhost:5000/readCustomers`, {
         method: 'GET'
@@ -21,6 +23,7 @@ let read = () => {
         .then(data => displayData(data));
 };
 
+//Display Data
 let displayData = (data) => {
     let table = "";
 
@@ -28,7 +31,7 @@ let displayData = (data) => {
         table += `
          <tr>
            <td>
-             <a type="button" onclick="updateUser(${JSON.stringify(user)})" data-bs-toggle="modal" data-bs-target="#updateUser" style="text-decoration: none; color: blue;">
+             <a type="button" onclick="updateUser(${JSON.stringify(user)})" data-bs-toggle="modal" data-bs-target="#updateModal" style="color: blue;">
                ${user.name}
              </a>
           </td>
@@ -36,13 +39,14 @@ let displayData = (data) => {
            <td>${user.phonenum}</td>
            <td>${user.email}</td>
            <td>${user.zipcode}</td>
-           <td><a type="button" onclick="deleteUser(${user.userid})" data-bs-toggle="modal" data-bs-target="#deleteUser">&#128465;</a></td>
+           <td><a type="button" onclick="deleteUser(${user.userid})" data-bs-toggle="modal" data-bs-target="#deleteModal">&#128465;</a></td>
          </tr>
         `;
     });
     document.querySelector("#customerList").innerHTML = table;
 };
 
+//Delete Customer
 let deleteUser = (id) => {
 
     document.querySelector("#btnDelete").addEventListener("click", () => {
@@ -58,14 +62,35 @@ let deleteUser = (id) => {
     });
 };
 
+//Get Customer Data for Update
 let updateUser = (user) => {
     document.querySelector("#fullName2").value = user.name;
     document.querySelector("#address2").value = user.address;
     document.querySelector("#phoneNum2").value = user.phonenum;
     document.querySelector("#email2").value = user.email;
     document.querySelector("#zipCode2").value = user.zipcode;
-
-    document.querySelector("#btnUpdate").addEventListener("click", () => {
-
-    });
+    document.querySelector("#userID").value = user.userid;
 };
+
+//Set Update Data
+document.querySelector("#btnUpdate").addEventListener("click", () => {
+    let form = {
+        name: document.querySelector("#fullName").value,
+        address: document.querySelector("#address").value,
+        phonenum: document.querySelector("#phoneNum").value,
+        email: document.querySelector("#email").value,
+        zipcode: document.querySelector("#zipCode").value
+    };
+    let id = document.querySelector("#userID").value;
+    fetch(`http://localhost:5000/updateCustomers?id=${id}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form)
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status) {
+                read();
+            }
+        });
+});

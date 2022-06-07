@@ -107,7 +107,7 @@
         </div>
 
         <!--Modals for actions-->
-        <div class="modal fade" id="deleteUser" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="deleteModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -122,7 +122,7 @@
             </div>
         </div>
 
-        <div class="modal fade" id="updateUser" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="updateModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -149,6 +149,7 @@
                             <span class="input-group-text">ZIP Code</span>
                             <input id="zipCode2" placeholder="ZIP Code" type="text" class="form-control" required>
                         </div>
+                        <input type="text" hidden id="userID">
                         <div class="modal-footer">
                             <button type="button" class="btn btn-primary" id="btnUpdate"
                                 data-bs-dismiss="modal">Confirm</button>
