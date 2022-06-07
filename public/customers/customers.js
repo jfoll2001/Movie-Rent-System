@@ -72,7 +72,7 @@ let updateUser = (user) => {
     document.querySelector("#userID").value = user.userid;
 };
 
-//Set Update Data
+//Insert Update Data
 document.querySelector("#btnUpdate").addEventListener("click", () => {
     let form = {
         name: document.querySelector("#fullName").value,

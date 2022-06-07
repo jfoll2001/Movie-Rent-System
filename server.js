@@ -89,9 +89,9 @@ http.createServer((req, res) => {
         case '/searchCustomers':
             searchCustomers(req, res);
             break;
-        case '/uniqueCustomers':
-            uniqueCustomers(req, res);
-            break;
+        //case '/uniqueCustomers':
+        //    uniqueCustomers(req, res);
+        //    break;
         default:
             let file = __dirname + '/public' + url;
             let stream = fs.createReadStream(file);
