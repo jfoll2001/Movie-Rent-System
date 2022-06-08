@@ -333,17 +333,10 @@ let saveRents = (req, res) => {
         let query = `INSERT INTO rentals SET ?`;
         connection.query(query, customers, (err, results) => {
             if (err) {
-                res.end(JSON.stringify({
-                    status: false,
-                    message: err.message
-                }));
+                throw (err);
             }
-            else {
-                res.writeHead(200, { 'Content-Type': 'json' });
-                res.end(JSON.stringify({
-                    status: true
-                }));
-            }
+            res.writeHead(200, { 'Content-Type': 'json' });
+            res.end();
         });
     });
 };

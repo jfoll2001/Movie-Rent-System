@@ -14,8 +14,8 @@ let save = () => {
             rentdate: rentStart,
             returndate: rentEnd,
             price: rentPrice,
-            movierented: movieSelect(),
-            userrenting: cutomerSelect()
+            movierented: document.querySelector("#movieSelect").value,
+            userrenting: document.querySelector("#customerSelect").value
         }
         fetch(`http://localhost:5000/saveRents`, {
             method: 'POST',
@@ -26,6 +26,7 @@ let save = () => {
             .then(data => {
                 data.status ? read() : alert(data.message);
             });
+            
     } else {
         alert("Incorrect Input");
     };
@@ -68,5 +69,32 @@ let customerSelect = (users) => {
 
 //Reads Data
 let read = () => {
+    fetch(`http://localhost:5000/readRents`, {
+        method: 'GET'
+    })
+        .then(response => response.json())
+        .then(data => displayData(data));
+};
 
+//Displays Data
+let displayData = (data) => {
+    let table = "";
+
+    data.forEach(rental => {
+        table += `
+        <tr>
+          <td>
+            <a type="button" onclick='updateRentals(${JSON.stringify(rental)})' data-bs-toggle="modal" data-bs-target="#updateModal" style="color: blue;">
+              ${rental.rentdate}
+            </a>
+         </td>          
+         <td>${rental.returndate}</td>
+         <td>${rental.price}</td>
+         <td>${rental.userrenting}</td>          
+         <td>${rental.movierented}</td>
+         <td><a type="button" onclick="deleteMovie(${rental.idrentals})" data-bs-toggle="modal" data-bs-target="#deleteModal">&#128465;</a></td>
+        </tr>
+       `;
+    });
+    document.querySelector("#rentalsList").innerHTML = table;
 };

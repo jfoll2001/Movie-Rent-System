@@ -85,7 +85,7 @@
 
             <div id="newCustomer">
                 <h4>Information About The Rental</h4>
-                <form>
+                <form onsubmit="save()">
                     <div class="input-group mb-3">
                         <span class="input-group-text">Rent Date </span>
                         <input id="rentDate" placeholder="mm/dd/yyyy" type="text" class="form-control" required>
@@ -106,7 +106,7 @@
                         <span class="input-group-text">Movie Title</span>
                         <select id="movieSelect" class="form-select"></select>
                     </div>
-                    <button id="btnSubCustomer" class="btn btn-primary">Submit</button>
+                    <button id="btnSubCustomer" class="btn btn-primary" type="submit">Submit</button>
                 </form>
             </div>
         </div>

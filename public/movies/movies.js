@@ -59,6 +59,7 @@ let read = () => {
         .then(data => displayData(data));
 };
 
+//Displays Data
 let displayData = (data) => {
     let table = "";
 
