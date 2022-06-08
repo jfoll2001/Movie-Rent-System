@@ -11,26 +11,28 @@ let save = () => {
     let genreI = document.querySelector("#genre").value;
     let genreVal = /^\w+(?:(?:,\s\w+)+|(?:\s\w+)+)$/;
 
-    let amountStockI = document.querySelector("#amountInStock").value;
-    let stockVal = /[1-9]+[0-9]*$/;
-
     let premiereI = "";
 
-    if (document.querySelector("#premiere").checked = true) {
+    if (document.querySelector("#premiere").checked) {
         premiereI = "YES"
     } else {
         premiereI = "NO"
     }
 
-    if (directorVal.test(directorI) && actorsVal.test(actorsI) && genreVal.test(genreI) && stockVal.test(amountStockI) == true) {
+    if (document.querySelector("#available").checked) {
+        availableI = "YES"
+    } else {
+        availableI = "NO"
+    }
+
+    if (directorVal.test(directorI) && actorsVal.test(actorsI) && genreVal.test(genreI) == true) {
         let form = {
             title: titleI,
             director: directorI,
             actors: actorsI,
             genre: genreI,
             premiere: premiereI,
-            available: "YES",
-            numberinstock: amountStockI
+            available: availableI
         }
         fetch(`http://localhost:5000/saveMovies`, {
             method: 'POST',
@@ -100,8 +102,7 @@ let updateMovie = (movie) => {
     document.querySelector("#title2").value = movie.title;
     document.querySelector("#director2").value = movie.director;
     document.querySelector("#actors2").value = movie.actors;
-    document.querySelector("#genre2").value = movie.genre;
-    document.querySelector("#amountInStock2").value = movie.numberinstock;
+    document.querySelector("#genre2").value = movie.genre;    
     document.querySelector("#movieID").value = movie.movieid;
 };
 
@@ -118,26 +119,28 @@ document.querySelector("#btnUpdate").addEventListener("click", () => {
     let genreI = document.querySelector("#genre2").value;
     let genreVal = /^\w+(?:(?:,\s\w+)+|(?:\s\w+)+)$/;
 
-    let amountStockI = document.querySelector("#amountInStock2").value;
-    let stockVal = /[1-9]+[0-9]*$/;
-
     let premiereI = "";
 
-    if (document.querySelector("#premiere2").checked = true) {
+    if (document.querySelector("#premiere2").checked) {
         premiereI = "YES"
     } else {
         premiereI = "NO"
     }
 
-    if (directorVal.test(directorI) && actorsVal.test(actorsI) && genreVal.test(genreI) && stockVal.test(amountStockI) == true) {
+    if (document.querySelector("#available2").checked) {
+        availableI = "YES"
+    } else {
+        availableI = "NO"
+    }
+
+    if (directorVal.test(directorI) && actorsVal.test(actorsI) && genreVal.test(genreI) == true) {
         let form = {
             title: titleI,
             director: directorI,
             actors: actorsI,
             genre: genreI,
             premiere: premiereI,
-            available: "YES",
-            numberinstock: amountStockI
+            available: availableI
         }
         let id = document.querySelector("#movieID").value;
         fetch(`http://localhost:5000/updateMovies?id=${id}`, {
@@ -155,7 +158,7 @@ document.querySelector("#btnUpdate").addEventListener("click", () => {
 });
 
 //Search Movie
-document.querySelector("btnSearchMovie").addEventListener("click", () => {
+document.querySelector("#btnSearchMovie").addEventListener("click", () => {
     let search = document.querySelector("#searchMovie").value;
     fetch(`http://localhost:5000/searchMovies?param=${search}`, {
         method: 'GET'
