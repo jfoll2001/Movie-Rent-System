@@ -301,7 +301,7 @@ let searchMovies = (req, res) => {
 };
 
 let showMoviesName = (req, res) => {
-    let query = `SELECT title FROM movies`;
+    let query = `SELECT title FROM movies WHERE available = 'YES'`;
     connection.query(query, (err, results) => {
         if (err) {
             throw (err);
