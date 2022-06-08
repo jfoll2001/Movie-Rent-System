@@ -62,6 +62,9 @@ http.createServer((req, res) => {
         case '/searchMovies':
             searchMovies(req, res);
             break;
+        case '/showMoviesName':
+            showMoviesName(req, res);
+            break;
         case '/readRents':
             readRents(req, res);
             break;
@@ -88,6 +91,9 @@ http.createServer((req, res) => {
             break;
         case '/searchCustomers':
             searchCustomers(req, res);
+            break;
+        case '/showCustomersName':
+            showCustomersName(req, res);
             break;
         default:
             let file = __dirname + '/public' + url;
@@ -193,6 +199,17 @@ let searchCustomers = (req, res) => {
     });
 };
 
+let showCustomersName = (req, res) => {
+    let query = `SELECT name FROM users`;
+    connection.query(query, (err, results) => {
+        if (err) {
+            throw (err);
+        }
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.end(JSON.stringify(results));
+    });
+};
+
 //Movies
 let readMovies = (req, res) => {
     let query = `SELECT * FROM movies`;
@@ -279,6 +296,17 @@ let searchMovies = (req, res) => {
             throw (err);
         }
         res.writeHead(200, { 'Content-Type': 'json' });
+        res.end(JSON.stringify(results));
+    });
+};
+
+let showMoviesName = (req, res) => {
+    let query = `SELECT title FROM movies`;
+    connection.query(query, (err, results) => {
+        if (err) {
+            throw (err);
+        }
+        res.writeHead(200, { 'Content-Type': 'text/html' });
         res.end(JSON.stringify(results));
     });
 };

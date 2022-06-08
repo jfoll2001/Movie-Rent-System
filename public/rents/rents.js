@@ -1,0 +1,72 @@
+//Inserts Rental
+let save = () => {
+    let rentStart = document.querySelector("#rentDate").value;
+    let rentVal = /(\d{1,2})\/(\d{1,2})\/(\d{4})/;
+
+    let rentEnd = document.querySelector("#returnDate").value;
+    let returnVal = /(\d{1,2})\/(\d{1,2})\/(\d{4})/;
+
+    let rentPrice = document.querySelector("#price").value;
+    let priceVal = /^\d+\.\d{0,2}$/;
+
+    if (rentVal.test(rentStart) && returnVal.test(rentEnd) && rentPrice.test(priceVal) == true) {
+        let form = {
+            rentdate: rentStart,
+            returndate: rentEnd,
+            price: rentPrice,
+            movierented: movieSelect(),
+            userrenting: cutomerSelect()
+        }
+        fetch(`http://localhost:5000/saveRents`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(form)
+        })
+            .then(response => response.json())
+            .then(data => {
+                data.status ? read() : alert(data.message);
+            });
+    } else {
+        alert("Incorrect Input");
+    };
+};
+
+//Gets Customer and Movie Names
+let readSelect = () => {
+    fetch(`http://localhost:5000/showMoviesName`, {
+        method: 'GET'
+    })
+        .then(response => response.json())
+        .then(data => movieSelect(data));
+
+    fetch(`http://localhost:5000/showCustomersName`, {
+        method: 'GET'
+    })
+        .then(response => response.json())
+        .then(data => customerSelect(data));
+};
+
+//Shows Movie Names
+let movieSelect = (movies) => {
+    let select = document.querySelector("#movieSelect");
+    movies.forEach(movie => {
+        select.innerHTML += `
+            <option value="${movie.title}">${movie.title}</option>
+         `;
+    });
+};
+
+//Shows Customer Names
+let customerSelect = (users) => {
+    let select = document.querySelector("#customerSelect");
+    users.forEach(user => {
+        select.innerHTML += `
+            <option value="${user.name}">${user.name}</option>
+         `;
+    });
+};
+
+//Reads Data
+let read = () => {
+
+};
