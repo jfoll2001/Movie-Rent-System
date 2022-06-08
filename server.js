@@ -165,10 +165,17 @@ let updateCustomers = (req, res) => {
         let query = `UPDATE users SET ? WHERE userid = ?`;
         connection.query(query, [customers, id], (err, results) => {
             if (err) {
-                throw (err);
+                res.end(JSON.stringify({
+                    status: false,
+                    message: err.message
+                }));
             }
-            res.writeHead(200, { 'Content-Type': 'json' });
-            res.end(JSON.stringify({ status: true }));
+            else {
+                res.writeHead(200, { 'Content-Type': 'json' });
+                res.end(JSON.stringify({
+                    status: true
+                }));
+            }
         });
     });
 };
@@ -248,10 +255,17 @@ let updateMovies = (req, res) => {
         let query = `UPDATE movies SET ? WHERE movieid = ?`;
         connection.query(query, [customers, id], (err, results) => {
             if (err) {
-                throw (err);
+                res.end(JSON.stringify({
+                    status: false,
+                    message: err.message
+                }));
             }
-            res.writeHead(200, { 'Content-Type': 'json' });
-            res.end(JSON.stringify({ status: true }));
+            else {
+                res.writeHead(200, { 'Content-Type': 'json' });
+                res.end(JSON.stringify({
+                    status: true
+                }));
+            }
         });
     });
 };
@@ -331,10 +345,17 @@ let updateRents = (req, res) => {
         let query = `UPDATE rentals SET ? WHERE idrentals = ?`;
         connection.query(query, [customers, id], (err, results) => {
             if (err) {
-                throw (err);
+                res.end(JSON.stringify({
+                    status: false,
+                    message: err.message
+                }));
             }
-            res.writeHead(200, { 'Content-Type': 'json' });
-            res.end(JSON.stringify({ status: true }));
+            else {
+                res.writeHead(200, { 'Content-Type': 'json' });
+                res.end(JSON.stringify({
+                    status: true
+                }));
+            }
         });
     });
 };

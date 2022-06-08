@@ -99,27 +99,46 @@ let updateUser = (user) => {
 
 //Insert Update Data
 document.querySelector("#btnUpdate").addEventListener("click", () => {
-    let form = {
-        name: document.querySelector("#fullName2").value,
-        address: document.querySelector("#address2").value,
-        phonenum: document.querySelector("#phoneNum2").value,
-        email: document.querySelector("#email2").value,
-        zipcode: document.querySelector("#zipCode2").value
-    };
-    let id = document.querySelector("#userID").value;
-    fetch(`http://localhost:5000/updateCustomers?id=${id}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form)
-    })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status) {
-                read();
-            }
-        });
+    let name = document.querySelector("#fullName").value;
+    let nameVal = /^[a-zA-Z ]{2,30}$/;
+
+    let address = document.querySelector("#address").value;
+    let addressVal = /^[a-zA-Z0-9\s,.'-]{3,}$/;
+
+    let phonenum = document.querySelector("#phoneNum").value;
+    let phoneVal = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+
+    let email = document.querySelector("#email").value;
+    let emailVal = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+    let zipcode = document.querySelector("#zipCode").value;
+    let zipVal = /^[0-9]{6}$/;
+    if (nameVal.test(name) && addressVal.test(address) && phoneVal.test(phonenum) && emailVal.test(email) && zipVal.test(zipcode) == true) {
+        let form = {
+            name: document.querySelector("#fullName2").value,
+            address: document.querySelector("#address2").value,
+            phonenum: document.querySelector("#phoneNum2").value,
+            email: document.querySelector("#email2").value,
+            zipcode: document.querySelector("#zipCode2").value
+        };
+        let id = document.querySelector("#userID").value;
+        fetch(`http://localhost:5000/updateCustomers?id=${id}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(form)
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status) {
+                    read();
+                }
+            });
+    } else {
+        alert("Incorrect input");
+    }
 });
 
+//Search Customer
 document.querySelector("#btnSearchCustomer").addEventListener("click", () => {
     let search = document.querySelector("#searchCustomer").value;
     fetch(`http://localhost:5000/searchCustomers?param=${search}`, {

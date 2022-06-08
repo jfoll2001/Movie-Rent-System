@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/styles.css">
 </head>
 
-<body>
+<body onload="read()">
 
     <div class="container">
 
@@ -104,6 +104,66 @@
                 </table>
             </div>
         </div>
+
+        <!--Modals for actions-->
+        <div class="modal fade" id="deleteModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Are you sure you want to delete movie?</h5>
+                    </div>
+                    <div class="modal-body">
+                        <button class="btn btn-primary" id="btnDelete" data-bs-dismiss="modal">Confirm</button>
+                        &nbsp;
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="updateModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Enter updated info</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Title</span>
+                            <input id="title2" placeholder="Title" type="text" class="form-control" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Director</span>
+                            <input id="director2" placeholder="Director" type="text" class="form-control" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Actors</span>
+                            <input id="actors2" placeholder="Actors" type="text" class="form-control" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Genre</span>
+                            <input id="genre2" placeholder="Genre" type="text" class="form-control" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Amount of Stock</span>
+                            <input id="amountInStock2" placeholder="Amount of Stock" type="text" class="form-control"
+                                required>
+                        </div>
+                        <div class="input-group-text mb-3">
+                            <span>Premiere: &nbsp;</span>
+                            <input id="premiere2" class="form-check-input mt-0" type="checkbox">
+                        </div>
+                        <input type="text" id="movieID" hidden>
+                        <button type="button" class="btn btn-primary" id="btnUpdate"
+                            data-bs-dismiss="modal">Confirm</button>
+                        &nbsp;
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     </div>
 
