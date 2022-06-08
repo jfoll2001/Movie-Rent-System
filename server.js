@@ -95,6 +95,12 @@ http.createServer((req, res) => {
         case '/showCustomersName':
             showCustomersName(req, res);
             break;
+        case '/allAvailableMovies':
+            allAvailableMovies(req, res);
+            break;
+        case '/allRentedMovies':
+            allRentedMovies(req, res);
+            break;
         default:
             let file = __dirname + '/public' + url;
             let stream = fs.createReadStream(file);
@@ -382,3 +388,25 @@ let updateRents = (req, res) => {
 };
 
 //Other
+
+let allAvailableMovies = (req, res) => {
+    let query = `SELECT * FROM movies WHERE available = 'YES'`;
+    connection.query(query, (err, results) => {
+        if (err) {
+            throw (err);
+        }
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.end(JSON.stringify(results));
+    });
+};
+
+let allRentedMovies = (req, res) => {
+    let query = `SELECT * FROM movies INNER JOIN rentals ON movies.title = rentals.movierented`;
+    connection.query(query, (err, results) => {
+        if (err) {
+            throw (err);
+        }
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.end(JSON.stringify(results));
+    });
+};
