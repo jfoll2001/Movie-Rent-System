@@ -116,20 +116,20 @@ let updateRentals = (rental) => {
     document.querySelector("#rentDate2").value = rental.rentdate;
     document.querySelector("#returnDate2").value = rental.returndate;
     document.querySelector("#price2").value = rental.price;
-    document.querySelector("#customerSelect2").value = rental.userrenting;
-    document.querySelector("#movieSelect2").value = rental.movierented;
+    document.querySelector("#customerSelect").value = rental.userrenting;
+    document.querySelector("#movieSelect").value = rental.movierented;
     document.querySelector("#rentalID").value = rental.idrentals;
 };
 
 //Insert Updated Data
 document.querySelector("#btnUpdate").addEventListener("click", () => {
-    let rentStart = document.querySelector("#rentDate").value;
+    let rentStart = document.querySelector("#rentDate2").value;
     let rentVal = /(\d{1,2})\/(\d{1,2})\/(\d{4})/;
 
-    let rentEnd = document.querySelector("#returnDate").value;
+    let rentEnd = document.querySelector("#returnDate2").value;
     let returnVal = /(\d{1,2})\/(\d{1,2})\/(\d{4})/;
 
-    let rentPrice = document.querySelector("#price").value;
+    let rentPrice = document.querySelector("#price2").value;
     let priceVal = /^\d+\.\d{0,2}$/;
 
     if (rentVal.test(rentStart) && returnVal.test(rentEnd) && priceVal.test(rentPrice) == true) {
